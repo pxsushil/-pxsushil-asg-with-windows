@@ -69,6 +69,25 @@ module "autoscale_group" {
 }
 ```
 
+#Custom USERDATA For Windows
+
+```hcl
+
+locals {
+  userdata = <<-USERDATA
+ <powershell>
+cd \Users\Administrator\Desktop\
+ipconfig >update.txt
+$contenttoupdate = Get-Content "C:\Users\Administrator\Desktop\update.txt" 
+$content = Get-Content "C: \Users\Administrator\Desktop\config.txt"
+$content[18]=$contenttoupdate[8]
+$content | Set-Content C:\Users\Administrator\Desktop\config.txt 
+ </powershell>
+ <persist>true</persist>
+  USERDATA
+}
+
+```
 To enable custom_alerts the map needs to be defined like so :
 ```hlc
 alarms = {
