@@ -87,6 +87,36 @@ $content | Set-Content C:\Users\Administrator\Desktop\config.txt
   USERDATA
 }
 
+In user-data, we are using a custom AMI which has a  file config.txt  in which we are adding the private IP of the address instance at line number 5 or index number 4
+Using Windows Custom AMI with Sysprep directly pass user data 
+```   C:\ProgramData\Amazon\EC2Launch\sysprep   ```
+
+#For Non-Sysprep Custom Windows AMI
+#Schedule EC2Launch to run on every boot
+You can schedule EC2Launch to run on every boot instead of only the initial boot.
+
+To enable EC2Launch to run on every boot:
+1. Open Windows PowerShell and run the following command:
+```C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\InitializeInstance.ps1 -SchedulePerBoot```
+
+2. Or, run the executable with the following command: 
+``` C:\ProgramData\Amazon\EC2-Windows\Launch\Settings\Ec2LaunchSettings.exe ```
+
+Then select Run EC2Launch on every boot. You can specify that your EC2 instance Shutdown without Sysprep or Shutdown with Sysprep.
+
+In Windows PowerShell, run the following command so that the system schedules the script to run as a Windows Scheduled Task each time the instance boots.
+
+```
+C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\SendEventLogs.ps1 -Schedule
+```
+
+To initialize the disks each time the instance boots, add the -Schedule flag as follows:
+
+```
+C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\InitializeDisks.ps1 -Schedule
+```
+
+
 ```
 To enable custom_alerts the map needs to be defined like so :
 ```hlc
