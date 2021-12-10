@@ -17,13 +17,18 @@ module "autoscale_group" {
   stage       = "Test_stage"
   environment = "Dev_environment"
   name        = "WindowsServers_name"
-  key_name    = "Windows"
+  # key_name    = "Windows"
   instance_market_options = {
     market_type = "spot"
   }
-  #pass====>>> HP_16n21029
-  image_id                    = "ami-0ae6ca7feeef36ff9"
-  instance_type               = "t3.large"
+
+  # AMI withs sys ami-02d07010f32208709   # pass====>>>    WIYozpQyv-&C?hydqscC$j6iGx!!1EQa // C:\ProgramData\Amazon\EC2Launch\sysprep   
+  #AMI With C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\InitializeDisks.ps1 -Schedule or InitializeInstance.ps1
+  # withou sypre pass====>>>    L?Vh&8q$vM*PM3&8yuK8E)@CGO$iefXo   ami-03b566c5ffc1a0a8e  
+  # Administrator   L?Vh&8q$vM*PM3&8yuK8E)@CGO$iefXo
+  # pass====>>>     D-esS4ZhbD.qO.Tpr$xjJELf6yYCn(b2 
+  image_id                    = "ami-02d07010f32208709"
+  instance_type               = "c4.4xlarge"
   security_group_ids          = ["sg-7ef51d38"]
   subnet_ids                  = ["subnet-eefef2a4", "subnet-d621a1e8", "subnet-44d9ef4b"]
   health_check_type           = "EC2"
