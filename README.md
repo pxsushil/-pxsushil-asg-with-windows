@@ -87,6 +87,8 @@ $content | Set-Content C:\Users\Administrator\Desktop\config.txt
   USERDATA
 }
 
+```
+
 In user-data, we are using a custom AMI which has a  file config.txt  in which we are adding the private IP of the address instance at line number 5 or index number 4
 Using Windows Custom AMI with Sysprep directly pass user data 
 
