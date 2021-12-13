@@ -18,6 +18,8 @@ module "autoscale_group" {
   environment = "Dev_environment"
   name        = "WindowsServers_name"
   # key_name    = "Windows"
+
+  #To change Lifecycle as normal we can comment following block/code instance_market_options
   instance_market_options = {
     market_type = "spot"
   }
